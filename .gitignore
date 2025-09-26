@@ -1,0 +1,8 @@
+# Pliki cache i bazy danych
+match_cache.db
+
+# Folder z cache'em Pythona
+__pycache__/
+
+# Pliki konfiguracyjne z sekretami
+config.py
