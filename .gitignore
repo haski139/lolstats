@@ -1,8 +1,16 @@
-# Pliki cache i bazy danych
-match_cache.db
-
-# Folder z cache'em Pythona
+# Foldery PyInstallera i cache Pythona
+build/
+dist/
 __pycache__/
+*.spec
+
+# Baza danych i pliki tymczasowe
+match_cache.db
+debug_screenshot.png
+chromedriver.exe
 
 # Pliki konfiguracyjne z sekretami
 config.py
+
+# Ustawienia edytora
+.vscode/
