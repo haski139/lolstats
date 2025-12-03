@@ -21,23 +21,24 @@ PLAYERS_TO_FIND = [
     "Aiming", "BeryL", "TheShy", "Wei", "Rookie", "GALA", "Meiko", "Breathe", "Tian", "Xiaohu", "Light", "Crisp"
 ]
 # NOWOŚĆ: Nazwa nowego pliku wyjściowego
-OUTPUT_JSON_FILE = "players2.json"
+OUTPUT_JSON_FILE = "players.json"
 
 # ==================================
 # === FUNKCJA SCRAPUJĄCA (Twoja wersja) ===
 # ==================================
 def scrape_player_data_with_uc(player_name):
     """Pobiera listę kont ORAZ rolę gracza bezpośrednio ze strony."""
-    print(f"  -> Uruchamiam przeglądarkę Brave w tle dla: {player_name}...")
+    print(f"  -> Uruchamiam przeglądarkę w tle dla: {player_name}...")
     url = f"https://www.trackingthepros.com/player/{player_name.lower().replace(' ', '')}/"
     
     options = uc.ChromeOptions()
     options.add_argument('--headless')
     
-    # === WSKAZUJEMY ŚCIEŻKĘ DO BRAVE ===
-    browser_path = "C:\\Program Files\\BraveSoftware\\Brave-Browser\\Application\\brave.exe" # <-- UPEWNIJ SIĘ, ŻE TO TWOJA ŚCIEŻKA
-    
-    driver = uc.Chrome(options=options, browser_executable_path=browser_path)
+    try:
+        driver = uc.Chrome(options=options)
+    except Exception:
+        print("  -> Nie znaleziono Chrome. Upewnij się, że masz zainstalowaną przeglądarkę Google Chrome.")
+        return [], "UNKNOWN"
     
     try:
         driver.get(url)
