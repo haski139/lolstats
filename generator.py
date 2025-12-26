@@ -20,11 +20,10 @@ PLAYERS_TO_FIND = [
     "fengyue", "Hang", "PerfecT", "Cuzz", "Bdd", "deokdam", "Peter", "Siwoo", "Lucid", "ShowMaker",
     "Aiming", "BeryL", "TheShy", "Wei", "Rookie", "GALA", "Meiko", "Breathe", "Tian", "Xiaohu", "Light", "Crisp"
 ]
-# NOWOŚĆ: Nazwa nowego pliku wyjściowego
 OUTPUT_JSON_FILE = "players.json"
 
 # ==================================
-# === FUNKCJA SCRAPUJĄCA (Twoja wersja) ===
+# === FUNKCJA SCRAPUJĄCA ===
 # ==================================
 def scrape_player_data_with_uc(player_name):
     """Pobiera listę kont ORAZ rolę gracza bezpośrednio ze strony."""
@@ -82,7 +81,7 @@ def scrape_player_data_with_uc(player_name):
         driver.quit()
 
 # ==================================
-# === POPRAWIONA FUNKCJA WERYFIKACYJNA ===
+# === FUNKCJA WERYFIKACYJNA ===
 # ==================================
 def get_puuid(riot_id, tag_line):
     """Cierpliwie przeszukuje wszystkie regiony, aż znajdzie konto."""
@@ -108,7 +107,7 @@ if __name__ == "__main__":
         if not riot_ids and role == "UNKNOWN":
             continue
         
-        # ZMIANA: Będziemy tu przechowywać pary [puuid, serwer]
+        # Będziemy tu przechowywać pary [puuid, serwer]
         player_accounts_data = [] 
         print(f"  -> Weryfikuję {len(riot_ids)} kont...")
         
