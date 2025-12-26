@@ -7,11 +7,11 @@ import sqlite3
 import json
 import os 
 import sys 
-import asyncio # <--- DODAJ TĘ LINIJKĘ (jeśli jej nie ma)
-import aiohttp # <--- TA LINIJKA TEŻ POWINNA BYĆ
+import asyncio 
+import aiohttp 
 
 # ==================================
-# === NOWOŚĆ: INTELIGENTNE ZNAJDOWANIE PLIKÓW ===
+# === INTELIGENTNE ZNAJDOWANIE PLIKÓW ===
 # ==================================
 def resource_path(relative_path):
     """ Zwraca poprawną ścieżkę do zasobu, działa zarówno w trybie .py jak i .exe """
@@ -22,14 +22,12 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
-# ... (reszta kodu pozostaje bez zmian) ...
 
 # ==================================
 # === KONFIGURACJA APLIKACJI ===
 # ==================================
 from config import API_KEY
 
-# Używamy naszej nowej funkcji do tworzenia ścieżek
 DB_FILE = resource_path("match_cache.db")
 PLAYERS_FILE = resource_path("players.json") 
 DESIRED_QUEUE_IDS = [420, 440]
@@ -38,8 +36,6 @@ ROUTING_SERVERS_TO_TRY = ["americas", "europe", "asia", "sea"]
 
 PROFESSIONAL_PLAYERS_DB = {}
 
-# ... (reszta kodu, wszystkie funkcje i klasa App, pozostaje DOKŁADNIE taka sama) ...
-# Poniżej wklejony jest cały, kompletny i działający kod.
 
 def setup_database():
     conn = sqlite3.connect(DB_FILE)
@@ -237,7 +233,6 @@ class App(customtkinter.CTk):
                                     participant_role = p.get('individualPosition', 'NONE').upper()
                                     if participant_role == 'UTILITY': participant_role = 'SUPPORT'
                                     
-                                    # === POPRAWKA LOGIKI JEST TUTAJ ===
                                     if role is None or participant_role == role:
                                         all_champions_played.append(p['championName'])
                                         games_on_patch_and_role += 1
